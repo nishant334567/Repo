@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/post/edit/{{post._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <h3>Edit Post</h3>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="User Name" name="name" value={{post.title}}>
+        </div>
+        {{!-- <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" cols="30" rows="10" value={{post.description}}></textarea>
+        </div> --}}
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input name="description" id="description" value={{post.description}}></textarea>
+        </div>
+        <div class="from-group">
+            <label for="publisher">Published By</label>
+            <input type="text" value={{post.publisher}} name="publisher" id="publisher">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+</body>
+
+</html>
