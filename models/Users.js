@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const mongoose  = require('mongoose')
-
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 const userSchema  = new mongoose.Schema({
     name:{
@@ -25,6 +26,13 @@ const userSchema  = new mongoose.Schema({
     }
 
 })
+
+userSchema.methods.generateToken = function()
+{
+    const token  = jwt.sign({_id:this.id, isAdmin:this.isAdmin},process.env.jwtToken)
+    return token
+}
+
 
 const schema  = Joi.object({
     name:Joi.string().min(5).max(255).required(),

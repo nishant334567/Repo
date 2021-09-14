@@ -14,19 +14,16 @@
         <h3>Edit Post</h3>
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="User Name" name="name" value={{post.title}}>
+            <input type="text" class="form-control" id="title" placeholder="User Name" name="title" value={{post.title}}>
         </div>
-        {{!-- <div class="form-group">
-            <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10" value={{post.description}}></textarea>
-        </div> --}}
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input name="description" id="description" value={{post.description}}></textarea>
-        </div>
+
         <div class="from-group">
             <label for="publisher">Published By</label>
-            <input type="text" value={{post.publisher}} name="publisher" id="publisher">
+            <input type="text" class="form-control" value={{post.publisher}} name="publisher" id="publisher">
+        </div>
+        <div class="from-group">
+            <label for="body">Description</label>
+            <textarea name="description" class="form-control" id="body" cols="120" rows="20">{{post.description}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

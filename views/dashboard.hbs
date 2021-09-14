@@ -26,7 +26,7 @@
             {{#each allPosts}}
             <tr>
                 <th scope="row"></th>
-                <td>{{title}}</td>
+                <td><a href="/post/{{_id}}">{{title}}</a></td>
                 <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
                 <td>{{publisher}}</td>
                 <td>
@@ -36,6 +36,7 @@
                 </td>
                 <td>
                     <form method="POST" action="/post/{{_id}}">
+                    <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_method" value="Delete">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
@@ -44,6 +45,14 @@
             {{/each}}
         </tbody>
     </table>
+    <form method="GET" action="/post/add">
+    <button type="submit" class="btn btn-primary">New Post</button>
+    </form>
+    <br>
+    <br>
+    <form action="/logout">
+    <button type="submit" class="btn btn-primary">Log Out</button>
+    </form>
 </body>
 
 </html>

@@ -4,7 +4,8 @@ const Joi = require('joi')
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-
+const cookieParser = require('cookie-parser');
+router.use(cookieParser())
 const schema  = Joi.object({
     email: Joi.string().min(5).max(255).email().required(),
     password:Joi.string().min(5).max(1024).required()
@@ -17,10 +18,15 @@ router.post('/',async(req,res)=>{
     if(!user) return res.send("Invalid Credentials")
     const validPassword = await bcrypt.compare(req.body.password,user.password)
     if(!validPassword) return res.send("Invalid Credentials")
+    
     const allPosts = await Post.find().lean()
-    res.render('dashboard',{
-        allPosts,
+    res.cookie('username',user.email,{
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax'
     })
+
+    res.redirect('/')
 
 })
 
