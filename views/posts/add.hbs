@@ -1,4 +1,3 @@
-
 <body>
     <form action="/post/add" method="POST" class="col s12">
         <h3>Add Post</h3>
@@ -9,15 +8,25 @@
 
         <div class="from-group">
             <label for="publisher">Published By</label>
-            <input type="text" class="form-control"  name="publisher" id="publisher">
+            <input type="text" class="form-control" name="publisher" id="publisher">
         </div>
         <div class="from-group">
             <label for="body">Description</label>
-            <textarea name="description" class="form-control" id="body" cols="120" rows="20"></textarea>
+            <textarea name="description" class="form-control" id="description" cols="120" rows="20"></textarea>
         </div>
+        <p id="show"></p>
         <button type="submit" class="btn btn-primary">Add Post</button>
     </form>
+    <br>
+    <button onclick="func()" class="btn btn-success">Word Count && Char Count</button>
 
+    <script>
+        function func() {
+
+            const x = document.getElementById("description").value
+            document.getElementById("show").innerHTML="Word count is "+x.split(" ").length + " Character count is " + x.length
+        }
+    </script>
 </body>
 
 </html>

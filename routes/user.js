@@ -16,12 +16,12 @@ router.post('/', async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt)
     await user.save()
     const allPosts = await Post.find().lean()
-    // console.log(post);
-    const token = user.generateToken()
-
-    res.header('x-auth-token', token).render('dashboard', {
-        allPosts,
+    res.cookie('username',user.email,{
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax'
     })
+    res.redirect("/")
 
 })
 
