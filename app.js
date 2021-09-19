@@ -18,7 +18,7 @@ const { formatDate } = require('./helpers/hbs')
 app.engine('.hbs',exphbs({ helpers:{formatDate}, extname: '.hbs'}))
 app.set('view engine','.hbs')
 
-mongoose.connect("mongodb://localhost:27017/final_db")
+mongoose.connect("mongodb+srv://unick:1234@cluster0.mz7y3.mongodb.net/Crud_DB?retryWrites=true&w=majority")
     .then(()=>{console.log("Connecting DB successfully")})
     .catch(err=>{console.log(err.message);})
 
