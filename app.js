@@ -15,8 +15,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieparser())
 const { formatDate } = require('./helpers/hbs')
 
-const Port = process.env.PORT || 5000
-
+const Port = process.env.PORT 
 app.engine('.hbs',exphbs({ helpers:{formatDate}, extname: '.hbs'}))
 app.set('view engine','.hbs')
 
