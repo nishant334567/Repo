@@ -15,6 +15,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieparser())
 const { formatDate } = require('./helpers/hbs')
 
+const Port = process.env.PORT || 5000
+
 app.engine('.hbs',exphbs({ helpers:{formatDate}, extname: '.hbs'}))
 app.set('view engine','.hbs')
 
@@ -55,4 +57,4 @@ app.use('/auth/users',User)
 app.use('/auth/auth',Auth)
 app.use('/post',post)
 
-app.listen(5000,()=>{console.log("Listening on 5000...")})
+app.listen(Port,()=>{console.log(`Listening on ${Port}`)})
