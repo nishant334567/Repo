@@ -19,7 +19,7 @@ const Port = process.env.PORT
 app.engine('.hbs',exphbs({ helpers:{formatDate}, extname: '.hbs'}))
 app.set('view engine','.hbs')
 
-mongoose.connect("mongodb+srv://unick:1234@cluster0.mz7y3.mongodb.net/Crud_DB?retryWrites=true&w=majority")
+mongoose.connect(process.env.Mongo_URL)
     .then(()=>{console.log("Connecting DB successfully")})
     .catch(err=>{console.log(err.message);})
 
